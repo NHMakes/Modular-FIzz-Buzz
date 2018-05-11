@@ -8,32 +8,30 @@ namespace Modular_Fizz_Buzz
 {
     class Program
     {
-        ///<summary>Typical FizzBuzz answer.</summary>
+        ///<summary>Typical FizzBuzz answer example 2</summary>
         ///<descrition>
-        ///     Note this requires a lot of code/variables to change and only works with 2 numbers unless you fancy adding the next number into 
-        ///     the first if() and then adding another else if at the bottom as well. 
+        ///     This example introduces an Output variable, whereby we concatinate the words Fizz, Buzz, Fuzz etc and does a check at the end
+        ///     to display the output.
+        ///     
+        ///     Unfortunatly it still requires multiple data entries and has repeating code.
         /// </description>
         /// <example>
         /// 
-        ///     if((i % 3 == 0) && (i % 5 ==0) && (i % 7 == 0))
-        ///         Console.WriteLine("FizzBuzzFuzz");
-        /// 
-        ///     [...]
-        ///     
-        ///     else if(i % 7== 0)
-        ///         Console.WriteLine("Fuzz");
+        ///     if (i % 7 == 0) Output += "Fuzz";
+        ///     if (i % 10 == 0) Output += "Bizz";
         ///         
         /// </example>
         static void Main(string[] args)
         { 
             for (int i = 1; i <= 100; i++)
             {
-                if((i % 3 == 0) && (i % 5 == 0))
-                    Console.WriteLine("FizzBuzz");
-                else if(i % 3 == 0)
-                    Console.WriteLine("Fizz");
-                else if(i % 5 == 0)
-                    Console.WriteLine("Buzz");
+                string Output = "";
+
+                if (i % 3 == 0) Output += "Fizz";
+                if (i % 5 == 0) Output += "Buzz";
+
+                if(Output != "")
+                    Console.WriteLine(Output);
                 else
                     Console.WriteLine(i);
             }
