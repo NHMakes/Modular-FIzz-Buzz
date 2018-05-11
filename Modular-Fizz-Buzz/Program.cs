@@ -8,33 +8,36 @@ namespace Modular_Fizz_Buzz
 {
     class Program
     {
-        ///<summary>Typical FizzBuzz answer example 2</summary>
+        ///<summary>Typical FizzBuzz answer example 3</summary>
         ///<descrition>
-        ///     This example introduces an Output variable, whereby we concatinate the words Fizz, Buzz, Fuzz etc and does a check at the end
-        ///     to display the output.
+        ///     This example shows a more intermediate - advance answer. You provide a list of modulas numbers into the Items array. Then 
+        ///     provide a related Output name in the Outputs array.
         ///     
-        ///     Unfortunatly it still requires multiple data entries and has repeating code.
+        ///     Program also includes an array length comparison to ensure IndexOutOfBounds exception doesn't happen.
         /// </description>
-        /// <example>
-        /// 
-        ///     if (i % 7 == 0) Output += "Fuzz";
-        ///     if (i % 10 == 0) Output += "Bizz";
-        ///         
-        /// </example>
+
         static void Main(string[] args)
-        { 
-            for (int i = 1; i <= 100; i++)
-            {
-                string Output = "";
+        {
+            int[] Items = new int[] { 3, 5, 7, 10 };
+            string[] Outputs = new string[] { "Fizz", "Buzz", "Fuzz", "Bizz" };
 
-                if (i % 3 == 0) Output += "Fizz";
-                if (i % 5 == 0) Output += "Buzz";
+            if(Items.Length != Outputs.Length)
+                Console.WriteLine("Please ensure both arrays are the same length.");
+            else
+                for (int i = 1; i <= 100; i++)
+                {
+                    string Output = "";
 
-                if(Output != "")
-                    Console.WriteLine(Output);
-                else
-                    Console.WriteLine(i);
-            }
+                    for (int j = 0; j < Items.Length; j++)
+                        if (i % Items[j] == 0)
+                            Output = Output + Outputs[j];
+
+                    if (Output != "")
+                        Console.WriteLine(Output);
+                    else
+                        Console.WriteLine(i);
+                }
+
             Console.Read();
         }
     }
